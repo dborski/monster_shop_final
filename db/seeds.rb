@@ -52,14 +52,14 @@ review8 = keyboard.reviews.create!(title: "Decent keyboard", description: "Does 
 review9 = mouse.reviews.create!(title: "Decent mouse", description: "Does the job", rating: 3)
 
 #Users
-regular1 = User.create!(name: "User Name1", address: "user address1", city: "user city", state: "state", zip: 10000, email: "user1", password: "user", role: 0)
-regular2 = User.create!(name: "User Name2", address: "user address2", city: "user city", state: "state", zip: 10000, email: "user2", password: "user", role: 0)
-regular3 = User.create!(name: "User Name3", address: "user address3", city: "user city", state: "state", zip: 10000, email: "user3", password: "user", role: 0)
-merchant1 = User.create!(name: "Merchant Name1", address: "merchant address", city: "merchant city", state: "state", zip: 20000, email: "merchant_bike", password: "merchant", role: 1, merchant_id: bike_shop.id)
-merchant2 = User.create!(name: "Merchant Name2", address: "merchant address", city: "merchant city", state: "state", zip: 20000, email: "merchant_dog", password: "merchant", role: 1, merchant_id: dog_shop.id)
-merchant3 = User.create!(name: "Merchant Name3", address: "merchant address", city: "merchant city", state: "state", zip: 20000, email: "merchant_computer", password: "merchant", role: 1, merchant_id: computer_shop.id)
-admin1 = User.create!(name: "Admin Name1", address: "admin address", city: "admin city", state: "state", zip: 30000, email: "admin1", password: "admin", role: 2)
-admin2 = User.create!(name: "Admin Name1", address: "admin address", city: "admin city", state: "state", zip: 30000, email: "admin2", password: "admin", role: 2)
+regular1 = User.create!(name: "User Name1", address: "user address1", city: "user city", state: "state", zip: 10000, email: "user1@a.com", password: "user", role: 0)
+regular2 = User.create!(name: "User Name2", address: "user address2", city: "user city", state: "state", zip: 10000, email: "user2@a.com", password: "user", role: 0)
+regular3 = User.create!(name: "User Name3", address: "user address3", city: "user city", state: "state", zip: 10000, email: "user3@a.com", password: "user", role: 0)
+merchant1 = User.create!(name: "Merchant Name1", address: "merchant address", city: "merchant city", state: "state", zip: 20000, email: "m_bike@a.com", password: "merchant", role: 1, merchant_id: bike_shop.id)
+merchant2 = User.create!(name: "Merchant Name2", address: "merchant address", city: "merchant city", state: "state", zip: 20000, email: "m_dog@a.com", password: "merchant", role: 1, merchant_id: dog_shop.id)
+merchant3 = User.create!(name: "Merchant Name3", address: "merchant address", city: "merchant city", state: "state", zip: 20000, email: "m_computer@a.com", password: "merchant", role: 1, merchant_id: computer_shop.id)
+admin1 = User.create!(name: "Admin Name1", address: "admin address", city: "admin city", state: "state", zip: 30000, email: "admin1@a.com", password: "admin", role: 2)
+admin2 = User.create!(name: "Admin Name1", address: "admin address", city: "admin city", state: "state", zip: 30000, email: "admin2@a.com", password: "admin", role: 2)
 
 #Orders
 order1 = Order.create!(user_id: regular1.id, status: 0)      
@@ -67,6 +67,7 @@ order2 = Order.create!(user_id: regular2.id, status: 0)
 order3 = Order.create!(user_id: regular3.id, status: 0)      
 order4 = Order.create!(user_id: regular1.id, status: 0)      
 
+#item_orders
 item_order1 = OrderItem.create!(order: order1, item: tire, price: tire.price, quantity: 11, fulfilled: false)
 item_order2 = OrderItem.create!(order: order1, item: pull_toy, price: pull_toy.price, quantity: 12, fulfilled: false)
 item_order3 = OrderItem.create!(order: order1, item: dog_bone, price: dog_bone.price, quantity: 13, fulfilled: false)
@@ -78,8 +79,3 @@ item_order8 = OrderItem.create!(order: order3, item: bicycle, price: bicycle.pri
 item_order9 = OrderItem.create!(order: order4, item: mouse, price: mouse.price, quantity: 5, fulfilled: false)
 item_order10 = OrderItem.create!(order: order4, item: keyboard, price: keyboard.price, quantity: 2, fulfilled: false)
 
-# megan = Merchant.create!(name: 'Megans Marmalades', address: '123 Main St', city: 'Denver', state: 'CO', zip: 80218)
-# brian = Merchant.create!(name: 'Brians Bagels', address: '125 Main St', city: 'Denver', state: 'CO', zip: 80218)
-# megan.items.create!(name: 'Ogre', description: "I'm an Ogre!", price: 20, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 5 )
-# megan.items.create!(name: 'Giant', description: "I'm a Giant!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 3 )
-# brian.items.create!(name: 'Hippo', description: "I'm a Hippo!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 3 )
