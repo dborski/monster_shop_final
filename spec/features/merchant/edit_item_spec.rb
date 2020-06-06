@@ -41,7 +41,6 @@ RSpec.describe 'Update Item Page' do
       expect(page).to have_content("Active")
       expect(page).to have_content("Inventory: #{inventory}")
     end
-
     it 'I can not edit the item with an incomplete form' do
       name = 'Giant'
 
