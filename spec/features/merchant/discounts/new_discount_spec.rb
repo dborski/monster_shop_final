@@ -37,19 +37,16 @@ RSpec.describe 'New Merchant Discount' do
       expect(page).to have_content(quantity_required)
       expect(page).to have_content(@discount.enabled)
     end
-    # it 'I can not create an  item for a merchant with an incomplete form' do
-    #   name = 'Ogre'
+    it 'I can not create a discount for a merchant with an incomplete form' do
+      name = 'Ogre'
 
-    #   visit "/merchant/items/new"
+      visit new_merchant_discount_path
 
-    #   fill_in 'Name', with: name
-    #   click_button 'Create Item'
+      fill_in 'Name', with: name
+      click_button 'Create Discount'
 
-    #   expect(page).to have_content("description: [\"can't be blank\"]")
-    #   expect(page).to have_content("price: [\"can't be blank\"]")
-    #   expect(page).to have_content("image: [\"can't be blank\"]")
-    #   expect(page).to have_content("inventory: [\"can't be blank\"]")
-    #   expect(page).to have_button('Create Item')
-    # end
+      expect(page).to have_content("You must enter all information")
+      expect(page).to have_button('Create Discount')
+    end
   end
 end

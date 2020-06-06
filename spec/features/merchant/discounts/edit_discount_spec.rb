@@ -37,6 +37,18 @@ RSpec.describe 'Edit Merchant Discount' do
       expect(page).to have_content(quantity_required)
       expect(page).to have_content(@discount1.enabled)
     end
+    it 'I can not edit a discount for a merchant with an incomplete form' do
+      blank = ""
+
+      visit edit_merchant_discount_path(@discount1)
+
+      fill_in 'Name', with: blank
+      click_button 'Update Discount'
+
+      expect(current_path).to eq(edit_merchant_discount_path(@discount1))
+      expect(page).to have_content("You must enter all information")
+      expect(page).to have_button('Update Discount')
+    end
   end
 end
 
