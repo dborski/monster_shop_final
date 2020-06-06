@@ -19,23 +19,23 @@ RSpec.describe 'Edit Merchant Discount' do
       expect(current_path).to eq(edit_merchant_discount_path(@discount1))
     end
 
-    xit 'US 1 - I can edit a discount for a merchant' do
+    it 'US 1 - I can edit a discount for a merchant' do
       name = '20 % off 5 items'
       percent_off = 20
       quantity_required = 5
 
-      visit edit_merchant_discount_path
+      visit edit_merchant_discount_path(@discount1)
 
       fill_in 'Name', with: name
       fill_in 'Percentage Off', with: percent_off
       fill_in 'Quantity Required', with: quantity_required
-      click_button 'Edit Discount'
+      click_button 'Update Discount'
 
       expect(current_path).to eq(merchant_discount_path(@discount1))
       expect(page).to have_content(name)
-      expect(page).to have_content(number_to_percentage(@discount.percent_off, precision: 0))
+      expect(page).to have_content(number_to_percentage(percent_off, precision: 0))
       expect(page).to have_content(quantity_required)
-      expect(page).to have_content(@discount.enabled)
+      expect(page).to have_content(@discount1.enabled)
     end
   end
 end

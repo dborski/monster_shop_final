@@ -1,6 +1,6 @@
 <h1>Edit <%= @discount.name %></h1>
 
-<%= form_for [@merchant, @discount] do |f| %>
+<%= form_for [@merchant, @discount], url:"/merchant/discounts/#{@discount.id}?edit=discount" do |f| %>
 <%= f.label :name, "Name" %>
 <%= f.text_field :name %>
 
