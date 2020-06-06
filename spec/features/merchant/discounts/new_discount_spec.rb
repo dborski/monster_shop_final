@@ -17,12 +17,12 @@ RSpec.describe 'New Merchant Discount' do
       expect(current_path).to eq(new_merchant_discount_path)
     end
 
-    xit 'US 1 - I can create a discount for a merchant' do
+    it 'US 1 - I can create a discount for a merchant' do
       name = '20 % off 5 items'
       percent_off = 20
       quantity_required = 5
 
-      visit "/merchant/discounts/new"
+      visit new_merchant_discount_path
 
       fill_in 'Name', with: name
       fill_in 'Percentage Off', with: percent_off
@@ -31,7 +31,7 @@ RSpec.describe 'New Merchant Discount' do
 
       @discount = Discount.last
 
-      expect(current_path).to eq("/merchant/discounts/#{@discount.id}")
+      expect(current_path).to eq(merchant_discount_path(@discount))
       expect(page).to have_content(percent_off)
       expect(page).to have_content(quantity_required)
       expect(page).to have_content("Active")
