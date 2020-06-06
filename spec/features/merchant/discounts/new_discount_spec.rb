@@ -9,7 +9,7 @@ RSpec.describe 'New Merchant Discount' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@m_user)
     end
 
-    it 'US 1 - I can click a link to a new discount form page' do
+    it 'US 1 - I click a link to edit a discount' do
       visit merchant_dashboard_path
 
       click_link 'New Discount'
