@@ -1,4 +1,4 @@
-<h1></h1><%= @discount.name %></h2>
-<p><%= @discount.percent_off %></p>
-<p><%= @discount.quantity_required %></p>
-<p><%= @discount.enabled %></p>
+<h1>Name: <%= @discount.name %></h1>
+<p>Percent Off: <%= number_to_percentage(@discount.percent_off, precision: 0) %></p>
+<p>Quantity Required: <%= @discount.quantity_required %></p>
+<p>Active? <%= @discount.enabled %></p>

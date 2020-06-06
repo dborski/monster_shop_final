@@ -33,7 +33,7 @@ RSpec.describe 'New Merchant Discount' do
 
       expect(current_path).to eq(merchant_discount_path(@discount))
       expect(page).to have_content(name)
-      expect(page).to have_content(percent_off)
+      expect(page).to have_content(number_to_percentage(@discount.percent_off, precision: 0))
       expect(page).to have_content(quantity_required)
       expect(page).to have_content(@discount.enabled)
     end
