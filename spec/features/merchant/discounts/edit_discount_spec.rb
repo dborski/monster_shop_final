@@ -16,7 +16,7 @@ RSpec.describe 'Edit Merchant Discount' do
 
       click_link 'Edit Discount'
 
-      expect(current_path).to eq(edit_merchant_discount_path)
+      expect(current_path).to eq(edit_merchant_discount_path(@discount1))
     end
 
     xit 'US 1 - I can edit a discount for a merchant' do

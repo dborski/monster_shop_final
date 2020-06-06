@@ -18,6 +18,11 @@ class Merchant::DiscountsController < Merchant::BaseController
     end 
   end 
 
+  def edit
+    @merchant = Merchant.find(current_user.merchant_id)
+    @discount = Discount.find(params[:id])
+  end 
+
   def show
     @discount = Discount.find(params[:id])
   end 
