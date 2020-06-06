@@ -14,10 +14,10 @@ RSpec.describe 'New Merchant Discount' do
 
       click_link 'New Discount'
 
-      expect(current_path).to eq("/merchant/discounts/new")
+      expect(current_path).to eq(new_merchant_discount_path)
     end
 
-    it 'US 1 - I can create a discount for a merchant' do
+    xit 'US 1 - I can create a discount for a merchant' do
       name = '20 % off 5 items'
       percent_off = 20
       quantity_required = 5
