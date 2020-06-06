@@ -32,9 +32,10 @@ RSpec.describe 'New Merchant Discount' do
       @discount = Discount.last
 
       expect(current_path).to eq(merchant_discount_path(@discount))
+      expect(page).to have_content(name)
       expect(page).to have_content(percent_off)
       expect(page).to have_content(quantity_required)
-      expect(page).to have_content("Active")
+      expect(page).to have_content(@discount.enabled)
     end
     # it 'I can not create an  item for a merchant with an incomplete form' do
     #   name = 'Ogre'
