@@ -1,0 +1,14 @@
+<h1>Add New Bulk Discount</h1>
+
+<%= form_for [@merchant, @discount] do |f| %>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %>
+  
+  <%= f.label :percent_off, "Percentage Off" %>
+  <%= f.number_field :percent_off, in: 1..100 %>
+  
+  <%= f.label :quantity_required, "Quantity Required" %>
+  <%= f.number_field :quantity_required, min: 1 %>
+  
+  <%= f.submit %>
+<% end %>
