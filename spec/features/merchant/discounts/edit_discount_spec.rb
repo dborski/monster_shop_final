@@ -52,16 +52,3 @@ RSpec.describe 'Edit Merchant Discount' do
   end
 end
 
-# User Story 2 - Discount Update
-
-# As a merchant,
-# When I visit a discount's show page
-# I see a link to edit the discount
-# When I click on this link, I am taken to an edit discount review path
-# On this new page, I see a form that includes that review's pre populated data:
-# - name
-# - % off
-# - quantity required
-# I can update any of these fields and submit the form.
-# When the form is submitted, I should return to that discount's show page
-# And I can see my updated discount
