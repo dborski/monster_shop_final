@@ -1,4 +1,5 @@
 require 'rails_helper'
+include ActionView::Helpers::NumberHelper
 
 RSpec.describe "Add Items to Cart" do
   describe "As a Visitor" do
@@ -37,12 +38,12 @@ RSpec.describe "Add Items to Cart" do
     before :each do
       @megan = Merchant.create!(name: 'Megans Marmalades', address: '123 Main St', city: 'Denver', state: 'CO', zip: 80218)
       @brian = Merchant.create!(name: 'Brians Bagels', address: '125 Main St', city: 'Denver', state: 'CO', zip: 80218)
-      @ogre = @megan.items.create!(name: 'Ogre', description: "I'm an Ogre!", price: 20, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 5 )
-      @giant = @megan.items.create!(name: 'Giant', description: "I'm a Giant!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 3 )
-      @hippo = @brian.items.create!(name: 'Hippo', description: "I'm a Hippo!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 3 )
+      @ogre = @megan.items.create!(name: 'Ogre', description: "I'm an Ogre!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 100 )
+      @giant = @megan.items.create!(name: 'Giant', description: "I'm a Giant!", price: 10, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 100 )
+      @hippo = @brian.items.create!(name: 'Hippo', description: "I'm a Hippo!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 100 )
 
       @discount1 = create(:discount, percent_off: 10, quantity_required: 5, merchant: @megan, enabled: true)
-      @discount1 = create(:discount, percent_off: 20, quantity_required: 6, merchant: @megan)
+      @discount2 = create(:discount, percent_off: 20, quantity_required: 6, merchant: @megan)
     end
 
     it "when I add an item to my cart that has a bulk discount, the active discount is applied" do
@@ -52,20 +53,22 @@ RSpec.describe "Add Items to Cart" do
 
       visit cart_path
 
-      within "#item-#{@gre.id}" do
-        4.times { click_button 'More of This!'}
+      within "#item-#{@ogre.id}" do
+        3.times { click_button('More of This!') }
       end
 
-      within "#item-#{@gre.id}" do
-        expect(page).to have_content("Price: #{@ogre.price}")
+      within "#item-#{@ogre.id}" do
+        expect(page).to have_content("Price: $50.00")
+        expect(page).to have_content("Subtotal: $200.00")
       end
-
-      within "#item-#{@gre.id}" do
-        click_button 'More of This!'
+      
+      within "#item-#{@ogre.id}" do
+        click_button('More of This!')
       end
-
-      within "#item-#{@gre.id}" do
+      
+      within "#item-#{@ogre.id}" do
         expect(page).to have_content("Price: $45.00")
+        expect(page).to have_content("Subtotal: $225.00")
       end
     end
 
