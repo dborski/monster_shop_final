@@ -5,6 +5,6 @@
 <% @discounts.each do |discount| %>
   <section id='discount-<%= discount.id%>'>
     <h2><%= link_to discount.name, merchant_discount_path(discount) %></h2>
-    <p><%= discount.active %></p>
+    <p>Enabled? <%= discount.enabled %></p>
   </section>
 <% end %>
