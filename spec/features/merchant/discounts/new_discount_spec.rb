@@ -10,7 +10,7 @@ RSpec.describe 'New Merchant Discount' do
     end
 
     it 'US 1 - I click a link to edit a discount' do
-      visit merchant_dashboard_path
+      visit merchant_discounts_path
 
       click_link 'New Discount'
 

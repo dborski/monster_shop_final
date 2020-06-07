@@ -4,8 +4,8 @@
 
 <%= link_to 'My Items', '/merchant/items' %>
 <%= link_to 'All Discounts', merchant_discounts_path %>
-<%= link_to 'New Discount', new_merchant_discount_path %>
 
+<br><br>
 <section class="orders">
   <% @merchant.pending_orders.each do |order| %>
     <section id="order-<%= order.id %>">
