@@ -42,8 +42,12 @@ RSpec.describe "Add Items to Cart" do
       @giant = @megan.items.create!(name: 'Giant', description: "I'm a Giant!", price: 10, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 100 )
       @hippo = @brian.items.create!(name: 'Hippo', description: "I'm a Hippo!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 100 )
 
+      @user = create(:user)
+
       @discount1 = create(:discount, percent_off: 10, quantity_required: 5, merchant: @megan, enabled: true)
       @discount2 = create(:discount, percent_off: 20, quantity_required: 6, merchant: @megan)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     end
 
     it "when I add an item to my cart that has a bulk discount, the active discount is applied" do
