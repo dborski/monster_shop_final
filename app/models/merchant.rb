@@ -33,4 +33,8 @@ class Merchant < ApplicationRecord
   def order_items_by_order(order_id)
     order_items.where(order_id: order_id)
   end
+
+  def discounts_meeting_quantity_required(quantity)
+     discounts.where("discounts.quantity_required <= '#{quantity}' AND discounts.enabled = 'true'")
+  end 
 end

@@ -57,5 +57,22 @@ RSpec.describe Merchant do
     it '.order_items_by_order' do
       expect(@megan.order_items_by_order(@order_1.id)).to eq([@order_item_1])
     end
-  end
+  end 
+
+  describe 'Discount Instance Methods' do
+    before :each do
+      @merchant1 = create(:merchant)
+      @merchant2 = create(:merchant)
+      @item1 = create(:item, price: 10, merchant: @merchant1)
+      @item2 = create(:item, price: 15, merchant: @merchant2)
+      @discount1 = create(:discount, percent_off: 10, quantity_required: 5, enabled: true, merchant: @merchant1)
+      @discount2 = create(:discount, percent_off: 5, quantity_required: 10, enabled: true, merchant: @merchant1)
+      @discount3 = create(:discount, percent_off: 15, quantity_required: 3, enabled: true, merchant: @merchant1)
+      @discount4 = create(:discount, percent_off: 5, quantity_required: 3, enabled: true, merchant: @merchant2)
+    end
+    it '.discounts_meeting_quantity_required' do
+
+      expect(@merchant1.discounts_meeting_quantity_required(5)).to eq([@discount1, @discount3])
+    end
+  end 
 end
