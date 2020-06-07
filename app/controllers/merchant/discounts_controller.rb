@@ -52,6 +52,21 @@ class Merchant::DiscountsController < Merchant::BaseController
     redirect_to merchant_discounts_path
   end 
 
+  def enable_disable
+    discount = Discount.find(params[:id])
+
+    case params[:tf]
+    when "false"
+      discount.update(enabled: false)
+      flash[:notice] = "You have disabled item #{discount.id}"
+    when "true"
+      discount.update(enabled: true)
+      flash[:notice] = "You have enabled item #{discount.id}"
+    end
+
+    redirect_to merchant_discounts_path
+  end 
+
   private
 
   def discount_params
