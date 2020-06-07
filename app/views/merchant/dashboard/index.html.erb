@@ -10,7 +10,7 @@
     <section id="order-<%= order.id %>">
       <%= link_to order.id, "/merchant/orders/#{order.id}" %>
       <p>Potential Revenue: <%= order.merchant_subtotal(@merchant.id) %></p>
-      <p>Quantity New Discount: <%= order.merchant_quantity(@merchant.id) %></p>
+      <p>Quantity of Items: <%= order.merchant_quantity(@merchant.id) %></p>
       <p>Created: <%= order.created_at %></p>
     </section>
   <% end %>
