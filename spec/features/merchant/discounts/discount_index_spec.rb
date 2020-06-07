@@ -16,7 +16,7 @@ RSpec.describe 'Merchant Discount Index' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@m_user)
     end
 
-    it 'I can link to my merchant items from the merchant dashboard' do
+    it 'US 4 - I can link to my merchant items from the merchant dashboard' do
       visit merchant_dashboard_path
 
       click_link 'All Discounts'
@@ -24,7 +24,7 @@ RSpec.describe 'Merchant Discount Index' do
       expect(current_path).to eq(merchant_discounts_path)
     end
 
-    it 'I see only my active discounts along with their name and if they are enabled' do
+    it 'US 4 - I see only my active discounts along with their name and if they are enabled' do
       visit merchant_discounts_path
 
       within "#discount-#{@discount1.id}" do
