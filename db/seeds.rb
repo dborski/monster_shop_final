@@ -28,6 +28,10 @@ tire_iron = bike_shop.items.create!(name: "Tire Iron", description: "Does the jo
 review1 = tire.reviews.create!(title: "Great tire", description: "Will buy this tire again", rating: 4)
 review2 = helmet.reviews.create!(title: "Cool helmet", description: "Very safe", rating: 3)
 
+#bike_shop discounts
+discount1 = bike_shop.discounts.create(name: "10% off 10 Items", percent_off: 10, quantity_required: 10, enabled: false)
+discount2 = bike_shop.discounts.create(name: "20% off 50 Items", percent_off: 20, quantity_required: 50, enabled: false)
+
 #dog_shop items
 pull_toy = dog_shop.items.create!(name: "Pull Toy", description: "Great pull toy!", price: 10, image: "https://m.media-amazon.com/images/I/61lYdX-EdfL._AC_SS350_.jpg", active: true, inventory: 100)
 dog_bone = dog_shop.items.create!(name: "Dog Bone", description: "They'll love it!", price: 21, image: "https://img.chewy.com/is/image/catalog/54226_MAIN._AC_SL1500_V1534449573_.jpg", active: true, inventory: 100)
@@ -39,17 +43,24 @@ review3 = pull_toy.reviews.create!(title: "Crappy pull toy", description: "Dog h
 review4 = dog_food.reviews.create!(title: "Mediocore dog food", description: "Dog doesn't love it or hate it", rating: 2)
 review5 = dog_food.reviews.create!(title: "Good, not great dog food", description: "Acceptable for my dog", rating: 4)
 
+#dog_shop discounts
+discount3 = dog_shop.discounts.create(name: "5% off 5 Items", percent_off: 5, quantity_required: 5, enabled: false)
+discount4 = dog_shop.discounts.create(name: "15% off 25 Items", percent_off: 15, quantity_required: 25, enabled: false)
+
 #computer_shop items
-laptop = computer_shop.items.create!(name: "Laptop", description: "Fastest computer around!", price: 1000, image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6356/6356671_sd.jpg", active: true, inventory: 100)
-keyboard = computer_shop.items.create!(name: "Keyboard", description: "Bluetooth keyboard", price: 50, image: "https://images-na.ssl-images-amazon.com/images/I/81PLqxtrJ3L._AC_SL1500_.jpg", active: true, inventory: 100)
-mouse = computer_shop.items.create!(name: "Mouse", description: "Bluetooth mouse", price: 40, image: "https://www.staples-3p.com/s7/is/image/Staples/s1020457_sc7?wid=512&hei=512", active: true, inventory: 100)
-carrying_case = computer_shop.items.create!(name: "Laptop carrying case", description: "Keep your laptop safe", price: 75, image: "https://static.bhphoto.com/images/images2500x2500/1422621364_1116114.jpg", active: true, inventory: 100)
+laptop = computer_shop.items.create!(name: "Laptop", description: "Fastest computer around!", price: 1000, image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6356/6356671_sd.jpg", active: true, inventory: 1000)
+keyboard = computer_shop.items.create!(name: "Keyboard", description: "Bluetooth keyboard", price: 50, image: "https://images-na.ssl-images-amazon.com/images/I/81PLqxtrJ3L._AC_SL1500_.jpg", active: true, inventory: 1000)
+mouse = computer_shop.items.create!(name: "Mouse", description: "Bluetooth mouse", price: 40, image: "https://www.staples-3p.com/s7/is/image/Staples/s1020457_sc7?wid=512&hei=512", active: true, inventory: 1000)
+carrying_case = computer_shop.items.create!(name: "Laptop carrying case", description: "Keep your laptop safe", price: 75, image: "https://static.bhphoto.com/images/images2500x2500/1422621364_1116114.jpg", active: true, inventory: 1000)
 
 #computer_shop reviews
 review6 = laptop.reviews.create!(title: "Great laptop", description: "Love it", rating: 4)
 review7 = laptop.reviews.create!(title: "Decent laptop", description: "Love it", rating: 3)
 review8 = keyboard.reviews.create!(title: "Decent keyboard", description: "Does the job", rating: 3)
 review9 = mouse.reviews.create!(title: "Decent mouse", description: "Does the job", rating: 3)
+
+#computer_shop discounts
+discount5 = computer_shop.discounts.create(name: "25% off 100 Items", percent_off: 25, quantity_required: 100, enabled: false)
 
 #Users
 regular1 = User.create!(name: "User Name1", address: "user address1", city: "user city", state: "state", zip: 10000, email: "user1@a.com", password: "user", role: 0)
