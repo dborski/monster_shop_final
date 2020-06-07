@@ -46,6 +46,7 @@ RSpec.describe "Add Items to Cart" do
 
       @discount1 = create(:discount, percent_off: 10, quantity_required: 5, merchant: @megan, enabled: true)
       @discount2 = create(:discount, percent_off: 20, quantity_required: 6, merchant: @megan)
+      @discount3 = create(:discount, percent_off: 20, quantity_required: 6, merchant: @megan, enabled: true)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     end
@@ -76,17 +77,21 @@ RSpec.describe "Add Items to Cart" do
       end
     end
 
-    xit "When I add items that have two or more discounts on them, the highest discount is applied" do
+    it "When I add items that have two or more discounts on them, the highest discount is applied" do
       visit item_path(@ogre)
 
       click_button 'Add to Cart'
 
-      visit item_path(@giant)
+      visit cart_path
 
-      click_button 'Add to Cart'
+      within "#item-#{@ogre.id}" do
+        5.times { click_button('More of This!') }
+      end
 
-      expect(page).to have_content("#{@giant.name} has been added to your cart!")
-      expect(page).to have_content("Cart: 2")
+      within "#item-#{@ogre.id}" do
+        expect(page).to have_content("Price: $40.00")
+        expect(page).to have_content("Subtotal: $240.00")
+      end
     end
   end
 end
