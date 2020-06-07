@@ -35,7 +35,6 @@ RSpec.describe 'Edit Merchant Discount' do
       expect(page).to have_content(name)
       expect(page).to have_content(number_to_percentage(percent_off, precision: 0))
       expect(page).to have_content(quantity_required)
-      expect(page).to have_content(@discount1.enabled)
     end
     it 'I can not edit a discount for a merchant with an incomplete form' do
       blank = ""
