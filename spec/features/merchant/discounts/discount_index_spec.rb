@@ -10,7 +10,8 @@ RSpec.describe 'Merchant Discount Index' do
 
       @discount1 = create(:discount, merchant: @merchant_1)
       @discount2 = create(:discount, merchant: @merchant_1)
-      @discount3 = create(:discount, merchant: @merchant_2)
+      @discount3 = create(:discount, merchant: @merchant_1, active: false)
+      @discount4 = create(:discount, merchant: @merchant_2)
       
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@m_user)
     end
@@ -23,7 +24,7 @@ RSpec.describe 'Merchant Discount Index' do
       expect(current_path).to eq(merchant_discounts_path)
     end
 
-    xit 'I see only my active discounts along with their name and if they are enabled' do
+    it 'I see only my active discounts along with their name and if they are enabled' do
       visit merchant_discounts_path
 
       within "#discount-#{@discount1.id}" do
@@ -37,6 +38,7 @@ RSpec.describe 'Merchant Discount Index' do
       end
 
       expect(page).to_not have_content(@discount3.name)
+      expect(page).to_not have_content(@discount4.name)
     end
   end
 end
