@@ -3,6 +3,7 @@
 <p><%= @merchant.city %> <%= @merchant.state %> <%= @merchant.zip %></p>
 
 <%= link_to 'My Items', '/merchant/items' %>
+<%= link_to 'All Discounts', merchant_discounts_path %>
 <%= link_to 'New Discount', new_merchant_discount_path %>
 
 <section class="orders">
