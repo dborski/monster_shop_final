@@ -37,6 +37,25 @@ RSpec.describe Item do
     it '.average_rating' do
       expect(@ogre.average_rating.round(2)).to eq(3.00)
     end
+  end 
+
+  describe 'Discount Instance Methods' do
+    before :each do
+      @merchant1 = create(:merchant)
+      @merchant2 = create(:merchant)
+      @item1 = create(:item, price: 10, merchant: @merchant1)
+      @item2 = create(:item, price: 15, merchant: @merchant2)
+      @discount1 = create(:discount, percent_off: 10, quantity_required: 5, enabled: true, merchant: @merchant1)
+      @discount2 = create(:discount, percent_off: 7, quantity_required: 10, enabled: true, merchant: @merchant1)
+      @discount3 = create(:discount, percent_off: 10, quantity_required: 3, enabled: true, merchant: @merchant1)
+      @discount4 = create(:discount, percent_off: 5, quantity_required: 3, enabled: true, merchant: @merchant2)
+    end
+    
+    it '.final_price' do
+
+      expect(@item1.final_price(5)).to eq(9.0)
+      expect(@item2.final_price(5)).to eq(15)
+    end
   end
 
   describe 'Class Methods' do

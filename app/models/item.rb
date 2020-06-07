@@ -29,4 +29,14 @@ class Item < ApplicationRecord
   def average_rating
     reviews.average(:rating)
   end
+
+  def final_price(quantity)
+    discount = merchant.discounts_meeting_quantity_required(quantity).highest_discount
+
+    if discount
+      self.price - (self.price * (discount.percent_off.to_f * 0.01))
+    else 
+      self.price
+    end 
+  end 
 end
