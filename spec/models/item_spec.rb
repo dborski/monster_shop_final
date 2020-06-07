@@ -54,7 +54,7 @@ RSpec.describe Item do
     it '.final_price' do
 
       expect(@item1.final_price(5)).to eq(9.0)
-      expect(@item2.final_price(5)).to eq(15)
+      expect(@item2.final_price(2)).to eq(15)
     end
   end
 

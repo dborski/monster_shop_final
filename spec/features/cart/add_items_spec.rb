@@ -93,5 +93,34 @@ RSpec.describe "Add Items to Cart" do
         expect(page).to have_content("Subtotal: $240.00")
       end
     end
+    it "When adding discounted items, the grandtotal is updated" do
+      visit item_path(@ogre)
+
+      click_button 'Add to Cart'
+
+      visit item_path(@giant)
+
+      click_button 'Add to Cart'
+
+      visit cart_path
+
+      within "#item-#{@ogre.id}" do
+        3.times { click_button('More of This!') }
+      end
+
+      expect(page).to have_content("Total: $210.00")
+      
+      within "#item-#{@ogre.id}" do
+        click_button('More of This!')
+      end
+      
+      expect(page).to have_content("Total: $235.00")
+      
+      within "#item-#{@ogre.id}" do
+        click_button('More of This!')
+      end
+
+      expect(page).to have_content("Total: $250.00")
+    end
   end
 end
