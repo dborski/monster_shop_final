@@ -40,6 +40,16 @@ class Cart
     @contents[item_id.to_s] * Item.find(item_id).price
   end
 
+  # def subtotal_of(item_id)
+  #   item = Item.find(item_id)
+  #   quantity = count_of(item_id)
+
+  #   if item.has_discounts?(quantity)
+  #   else
+  #     @contents[item_id.to_s] * Item.find(item_id).price
+  #   end 
+  # end
+
   def limit_reached?(item_id)
     count_of(item_id) == Item.find(item_id).inventory
   end
