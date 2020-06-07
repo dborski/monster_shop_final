@@ -30,7 +30,7 @@ review2 = helmet.reviews.create!(title: "Cool helmet", description: "Very safe",
 
 #bike_shop discounts
 discount1 = bike_shop.discounts.create(name: "10% off 10 Items", percent_off: 10, quantity_required: 10, enabled: false)
-discount2 = bike_shop.discounts.create(name: "20% off 50 Items", percent_off: 20, quantity_required: 50, enabled: false)
+discount2 = bike_shop.discounts.create(name: "20% off 20 Items", percent_off: 20, quantity_required: 20, enabled: false)
 
 #dog_shop items
 pull_toy = dog_shop.items.create!(name: "Pull Toy", description: "Great pull toy!", price: 10, image: "https://m.media-amazon.com/images/I/61lYdX-EdfL._AC_SS350_.jpg", active: true, inventory: 100)
@@ -45,7 +45,7 @@ review5 = dog_food.reviews.create!(title: "Good, not great dog food", descriptio
 
 #dog_shop discounts
 discount3 = dog_shop.discounts.create(name: "5% off 5 Items", percent_off: 5, quantity_required: 5, enabled: false)
-discount4 = dog_shop.discounts.create(name: "15% off 25 Items", percent_off: 15, quantity_required: 25, enabled: false)
+discount4 = dog_shop.discounts.create(name: "15% off 15 Items", percent_off: 15, quantity_required: 15, enabled: false)
 
 #computer_shop items
 laptop = computer_shop.items.create!(name: "Laptop", description: "Fastest computer around!", price: 1000, image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6356/6356671_sd.jpg", active: true, inventory: 1000)
@@ -60,7 +60,7 @@ review8 = keyboard.reviews.create!(title: "Decent keyboard", description: "Does 
 review9 = mouse.reviews.create!(title: "Decent mouse", description: "Does the job", rating: 3)
 
 #computer_shop discounts
-discount5 = computer_shop.discounts.create(name: "25% off 100 Items", percent_off: 25, quantity_required: 100, enabled: false)
+discount5 = computer_shop.discounts.create(name: "25% off 10 Items", percent_off: 25, quantity_required: 10, enabled: false)
 
 #Users
 regular1 = User.create!(name: "User Name1", address: "user address1", city: "user city", state: "state", zip: 10000, email: "user1@a.com", password: "user", role: 0)
