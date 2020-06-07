@@ -5,6 +5,12 @@
 <% @discounts.each do |discount| %>
   <section id='discount-<%= discount.id%>'>
     <h2><%= link_to discount.name, merchant_discount_path(discount) %></h2>
-    <p>Enabled? <%= discount.enabled %></p>
+    <% if discount.enabled %>
+      <p>Discount Enabled</p>
+      <%= link_to "Disable Discount", "/merchant/discounts/#{discount.id}/enable?tf=false", method: :patch  %>
+    <% else %>
+      <p>Discount Disabled</p>
+      <%= link_to "Enable Discount", "/merchant/discounts/#{discount.id}/enable?tf=true", method: :patch  %>
+    <% end %>
   </section>
 <% end %>
