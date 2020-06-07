@@ -1,8 +1,15 @@
 class Merchant::DiscountsController < Merchant::BaseController
 
+  def index
+  end 
+
   def new
     @merchant = Merchant.find(current_user.merchant_id)
     @discount = Discount.new
+  end 
+
+  def show
+    @discount = Discount.find(params[:id])
   end 
 
   def create
@@ -36,8 +43,11 @@ class Merchant::DiscountsController < Merchant::BaseController
     end 
   end 
 
-  def show
-    @discount = Discount.find(params[:id])
+  def destroy
+    discount = Discount.find(params[:id])  
+    discount.update(active: false)
+
+    redirect_to merchant_discounts_path
   end 
 
   private

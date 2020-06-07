@@ -11,11 +11,11 @@ RSpec.describe 'Delete Merchant Discount' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@m_user)
     end
 
-    it 'US 3 - I can delete(deactivat) a discount for a merchant' do
+    it 'US 3 - I can delete(deactivate) a discount for a merchant' do
 
       visit merchant_discount_path(@discount1)
 
-      click_button 'Delete Discount'
+      click_link 'Delete Discount'
 
       expect(current_path).to eq(merchant_discounts_path)
 
