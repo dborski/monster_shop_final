@@ -10,4 +10,4 @@ class Discount < ApplicationRecord
   def self.highest_discount
     order(percent_off: :desc).first
   end 
-end
+end 
