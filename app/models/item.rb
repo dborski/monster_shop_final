@@ -30,19 +30,19 @@ class Item < ApplicationRecord
     reviews.average(:rating)
   end
 
-  def applicable_discount(quantity)
+  def best_applicable_discount(quantity)
     merchant.discounts_meeting_quantity_required(quantity).highest_discount
   end 
 
-  def discounted_price(discount)
-    price - (price * (discount.percent_off.to_f * 0.01))
+  def discounted_price(percent_off)
+    price - (price * (percent_off.to_f * 0.01))
   end 
 
   def final_price(quantity)
-    discount = applicable_discount(quantity)
+    discount = best_applicable_discount(quantity)
 
     if discount
-      discounted_price(discount)
+      discounted_price(discount.percent_off)
     else 
       price
     end 
