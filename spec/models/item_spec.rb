@@ -49,8 +49,20 @@ RSpec.describe Item do
       @discount2 = create(:discount, percent_off: 7, quantity_required: 10, enabled: true, merchant: @merchant1)
       @discount3 = create(:discount, percent_off: 10, quantity_required: 3, enabled: true, merchant: @merchant1)
       @discount4 = create(:discount, percent_off: 5, quantity_required: 3, enabled: true, merchant: @merchant2)
+      @discount5 = create(:discount, percent_off: 10, quantity_required: 6, enabled: true, merchant: @merchant2)
     end
     
+    it '.discounted_price' do
+
+      expect(@item1.discounted_price(10)).to eq(9)
+      expect(@item2.discounted_price(20)).to eq(12)
+    end
+    it '.best_applicable_discount' do
+
+      expect(@item1.best_applicable_discount(10)).to eq(@discount1)
+      expect(@item2.best_applicable_discount(5)).to eq(@discount4)
+      expect(@item2.best_applicable_discount(6)).to eq(@discount5)
+    end
     it '.final_price' do
 
       expect(@item1.final_price(5)).to eq(9.0)
