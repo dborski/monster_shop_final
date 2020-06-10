@@ -35,6 +35,6 @@ class Merchant < ApplicationRecord
   end
 
   def discounts_meeting_quantity_required(quantity)
-     discounts.where("discounts.quantity_required <= '#{quantity}' AND discounts.enabled = 'true'")
+     discounts.where("#{quantity} >= discounts.quantity_required AND discounts.enabled = true")
   end 
 end
