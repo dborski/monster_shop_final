@@ -51,7 +51,10 @@ Rails.application.routes.draw do
 
   namespace :merchant do
     get '/', to: 'dashboard#index', as: :dashboard
+
     get 'orders/:id', to: 'orders#show', as: 'order'
+    get '/orders/:id/fulfill/:order_item_id', to: 'orders#fulfill'
+
     get '/items', to: 'items#index'
     post '/items', to: 'items#create'
     get '/items/new', to: 'items#new', as: 'new_merchant_item'
@@ -60,9 +63,16 @@ Rails.application.routes.draw do
     put '/items/:id', to: 'items#update'
     delete '/items/:id', to: 'items#destroy'
     put '/items/:id/change_status', to: 'items#change_status'
-    get '/orders/:id/fulfill/:order_item_id', to: 'orders#fulfill'
+
     patch '/discounts/:id/enable', to: 'discounts#enable_disable'
-    resources :discounts, only: [:index, :new, :create, :edit, :update, :show, :destroy]
+    get '/discounts', to: 'discounts#index'
+    post '/discounts', to: 'discounts#create'
+    get '/discounts/new', to: 'discounts#new', as: 'new_discount'
+    get '/discounts/:id/edit', to: 'discounts#edit', as: 'edit_discount'
+    get '/discounts/:id', to: 'discounts#show', as: 'discount'
+    patch '/discounts/:id', to: 'discounts#update'
+    put '/discounts/:id', to: 'discounts#update'
+    delete '/discounts/:id', to: 'discounts#destroy'
   end
 
   namespace :admin do
