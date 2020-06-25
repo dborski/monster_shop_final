@@ -32,7 +32,11 @@ Rails.application.routes.draw do
   delete '/cart/:item_id', to: 'cart#remove_item'
 
   get '/registration', to: 'users#new', as: :registration
-  resources :users, only: [:create, :update]
+
+  post '/users', to: 'users#create'
+  patch '/users', to: 'users#update', as: 'user'
+  put '/users', to: 'users#update'
+
   patch '/user/:id', to: 'users#update'
   get '/profile', to: 'users#show'
   get '/profile/edit', to: 'users#edit'
