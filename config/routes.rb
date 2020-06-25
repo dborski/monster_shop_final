@@ -82,7 +82,9 @@ Rails.application.routes.draw do
     patch '/merchants/:id', to: 'merchants#update'
     put '/merchants/:id', to: 'merchants#update'
 
-    resources :users, only: [:index, :show]
+    get '/users', to: 'users#index'
+    get '/users/:id', to: 'users#show', as: 'user'
+
     patch '/orders/:id/ship', to: 'orders#ship'
   end
 end
