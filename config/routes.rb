@@ -34,10 +34,9 @@ Rails.application.routes.draw do
   get '/registration', to: 'users#new', as: :registration
 
   post '/users', to: 'users#create'
-  patch '/users', to: 'users#update', as: 'user'
-  put '/users', to: 'users#update'
+  patch '/users/:id', to: 'users#update', as: 'user'
+  put '/users/:id', to: 'users#update'
 
-  patch '/user/:id', to: 'users#update'
   get '/profile', to: 'users#show'
   get '/profile/edit', to: 'users#edit'
   get '/profile/edit_password', to: 'users#edit_password'
@@ -52,8 +51,14 @@ Rails.application.routes.draw do
 
   namespace :merchant do
     get '/', to: 'dashboard#index', as: :dashboard
-    resources :orders, only: :show
-    resources :items, only: [:index, :new, :create, :edit, :update, :destroy]
+    get 'orders/:id', to: 'orders#show', as: 'order'
+    get '/items', to: 'items#index'
+    post '/items', to: 'items#create'
+    get '/items/new', to: 'items#new', as: 'new_merchant_item'
+    get '/items/:id/edit', to: 'items#edit', as: 'edit_merchant_item'
+    patch '/items/:id', to: 'items#update', as: 'merchant_item'
+    put '/items/:id', to: 'items#update'
+    delete '/items/:id', to: 'items#destroy'
     put '/items/:id/change_status', to: 'items#change_status'
     get '/orders/:id/fulfill/:order_item_id', to: 'orders#fulfill'
     patch '/discounts/:id/enable', to: 'discounts#enable_disable'
