@@ -16,7 +16,7 @@ RSpec.describe 'Edit Merchant Discount' do
 
       click_link 'Edit Discount'
 
-      expect(current_path).to eq(edit_merchant_discount_path(@discount1))
+      expect(current_path).to eq(merchant_edit_discount_path(@discount1))
     end
 
     it 'US 1 - I can edit a discount for a merchant' do
@@ -24,7 +24,7 @@ RSpec.describe 'Edit Merchant Discount' do
       percent_off = 20
       quantity_required = 5
 
-      visit edit_merchant_discount_path(@discount1)
+      visit merchant_edit_discount_path(@discount1)
 
       fill_in 'Name', with: name
       fill_in 'Percentage Off', with: percent_off
@@ -39,12 +39,12 @@ RSpec.describe 'Edit Merchant Discount' do
     it 'I can not edit a discount for a merchant with an incomplete form' do
       blank = ""
 
-      visit edit_merchant_discount_path(@discount1)
+      visit merchant_edit_discount_path(@discount1)
 
       fill_in 'Name', with: blank
       click_button 'Update Discount'
 
-      expect(current_path).to eq(edit_merchant_discount_path(@discount1))
+      expect(current_path).to eq(merchant_edit_discount_path(@discount1))
       expect(page).to have_content("You must enter all information")
       expect(page).to have_button('Update Discount')
     end

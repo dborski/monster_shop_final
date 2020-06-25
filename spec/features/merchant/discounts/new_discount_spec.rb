@@ -14,7 +14,7 @@ RSpec.describe 'New Merchant Discount' do
 
       click_link 'New Discount'
 
-      expect(current_path).to eq(new_merchant_discount_path)
+      expect(current_path).to eq(merchant_new_discount_path)
     end
 
     it 'US 1 - I can create a discount for a merchant' do
@@ -22,7 +22,7 @@ RSpec.describe 'New Merchant Discount' do
       percent_off = 20
       quantity_required = 5
 
-      visit new_merchant_discount_path
+      visit merchant_new_discount_path
 
       fill_in 'Name', with: name
       fill_in 'Percentage Off', with: percent_off
@@ -39,7 +39,7 @@ RSpec.describe 'New Merchant Discount' do
     it 'I can not create a discount for a merchant with an incomplete form' do
       name = 'Ogre'
 
-      visit new_merchant_discount_path
+      visit merchant_new_discount_path
 
       fill_in 'Name', with: name
       click_button 'Create Discount'

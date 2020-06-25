@@ -1,6 +1,6 @@
 <h1>All Discounts</h1>
 
-<%= link_to 'New Discount', new_merchant_discount_path %>
+<%= link_to 'New Discount', merchant_new_discount_path %>
 
 <% @discounts.each do |discount| %>
   <section id='discount-<%= discount.id%>'>

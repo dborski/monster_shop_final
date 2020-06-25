@@ -23,7 +23,7 @@ class Merchant::DiscountsController < Merchant::BaseController
       redirect_to merchant_discount_path(discount)
     else
       flash[:error] = "You must enter all information"
-      redirect_to new_merchant_discount_path
+      redirect_to merchant_new_discount_path
     end 
   end 
 
@@ -41,7 +41,7 @@ class Merchant::DiscountsController < Merchant::BaseController
       redirect_to merchant_discount_path(discount)
     else
       flash[:error] = "You must enter all information"
-      redirect_to edit_merchant_discount_path(discount)
+      redirect_to merchant_edit_discount_path(discount)
     end 
   end 
 
